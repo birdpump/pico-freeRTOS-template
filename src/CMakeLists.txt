@@ -15,13 +15,14 @@ target_link_libraries(${ProjectName}
         hardware_gpio
         hardware_spi
         hardware_timer
+        pico_cyw43_arch_lwip_threadsafe_background
         FreeRTOS-Kernel-Heap4
         pico_neopixel
 )
 
 # Enable USB output, disable UART output
 pico_enable_stdio_usb(${ProjectName} 1)
-pico_enable_stdio_uart(${ProjectName} 0)
+pico_enable_stdio_uart(${ProjectName} 1)
 
 # Create map/bin/hex/uf2 files
 pico_add_extra_outputs(${ProjectName})

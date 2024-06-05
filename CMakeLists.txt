@@ -6,6 +6,8 @@ set(PICO_SDK_PATH "C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/pico-sdk/")
 # Name project
 SET(ProjectName f1_pico-rtos)
 
+# set board
+set(PICO_BOARD pico_w)
 
 
 # Set any variables required for importing libraries
@@ -17,6 +19,9 @@ include(${FREERTOS_KERNEL_PATH}/portable/ThirdParty/GCC/RP2040/FreeRTOS_Kernel_i
 
 # Define project
 project(${ProjectName} CXX C ASM)
+
+# needed to allow reset using openocd
+add_compile_definitions(PICO_STDIO_USB_ENABLE_RESET_VIA_VENDOR_INTERFACE=1)
 
 # Initialize the Raspberry Pi Pico SDK
 pico_sdk_init()
